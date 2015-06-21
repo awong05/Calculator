@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFE55DA71B3677A60070D65A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEBC5D51B2C688800A288D0 /* ViewController.swift */; };
 		AFEBC5D41B2C688800A288D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEBC5D31B2C688800A288D0 /* AppDelegate.swift */; };
-		AFEBC5D61B2C688800A288D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFEBC5D51B2C688800A288D0 /* ViewController.swift */; };
 		AFEBC5D91B2C688800A288D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFEBC5D71B2C688800A288D0 /* Main.storyboard */; };
 		AFEBC5DB1B2C688800A288D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFEBC5DA1B2C688800A288D0 /* Images.xcassets */; };
 		AFEBC5DE1B2C688800A288D0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFEBC5DC1B2C688800A288D0 /* LaunchScreen.xib */; };
@@ -212,7 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFEBC5D61B2C688800A288D0 /* ViewController.swift in Sources */,
+				AFE55DA71B3677A60070D65A /* ViewController.swift in Sources */,
 				AFEBC5D41B2C688800A288D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,6 +411,7 @@
 				AFEBC5EF1B2C688800A288D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AFEBC5F01B2C688800A288D0 /* Build configuration list for PBXNativeTarget "CalculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +420,7 @@
 				AFEBC5F21B2C688800A288D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
