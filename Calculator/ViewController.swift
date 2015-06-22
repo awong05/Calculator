@@ -32,6 +32,7 @@ class ViewController: UIViewController
         if userIsInTheMiddleOfTypingANumber {
             enter()
         }
+        history.text = history.text! + " \(operation)"
         switch operation {
         case "×": performOperation { $0 * $1 }
         case "÷": performOperation { $1 / $0 }
@@ -64,7 +65,7 @@ class ViewController: UIViewController
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         operandStack.append(displayValue)
-        history.text = history.text! + "\(displayValue)"
+        history.text = history.text! + " \(displayValue)"
         println("operandStack = \(operandStack)")
     }
     
