@@ -64,6 +64,7 @@ class ViewController: UIViewController
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         operandStack.append(displayValue)
+        history.text = history.text! + "\(displayValue)"
         println("operandStack = \(operandStack)")
     }
     
