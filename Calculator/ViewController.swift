@@ -84,4 +84,10 @@ class ViewController: UIViewController
         history.text = ""
         operandStack.removeAll()
     }
+    
+    @IBAction func backspace(sender: UIButton) {
+    }
+    
+    @IBAction func changeSign(sender: UIButton) {
+    }
 }
