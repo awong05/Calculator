@@ -65,12 +65,12 @@ class ViewController: UIViewController
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
-        operandStack.append(displayValue!)
+        operandStack.append(displayValue)
         history.text = history.text! + " \(displayValue)"
         println("operandStack = \(operandStack)")
     }
     
-    var displayValue: Double? {
+    var displayValue: Double {
         get {
             return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
         }
