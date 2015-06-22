@@ -78,4 +78,10 @@ class ViewController: UIViewController
             userIsInTheMiddleOfTypingANumber = false
         }
     }
+    
+    @IBAction func clearEverything(sender: UIButton) {
+        display.text = "0"
+        history.text = ""
+        operandStack.removeAll()
+    }
 }
