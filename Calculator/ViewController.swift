@@ -83,9 +83,16 @@ class ViewController: UIViewController
         display.text = "0"
         history.text = ""
         operandStack.removeAll()
+        userIsInTheMiddleOfTypingANumber = false
     }
     
     @IBAction func backspace(sender: UIButton) {
+        if count(display.text!) > 1 {
+            display.text = dropLast(display.text!)
+        } else {
+            display.text = "0"
+            userIsInTheMiddleOfTypingANumber = false
+        }
     }
     
     @IBAction func changeSign(sender: UIButton) {
