@@ -18,6 +18,7 @@ class ViewController: UIViewController
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTypingANumber {
+            // Uses OR short-circuiting to efficiently check decimal conditions.
             if digit != "." || display.text!.rangeOfString(".") == nil {
                 display.text = display.text! + digit
             }
@@ -97,6 +98,10 @@ class ViewController: UIViewController
     }
     
     @IBAction func changeSign(sender: UIButton) {
+        // TODO: Refactor this block to be more succinct.
+        // Currently, uses one loop to check if user is in the middle of typing.
+        // If true, function uses nested loop to check current sign, act accordingly.
+        // Otherwise, treats button as normal unary operation.
         if userIsInTheMiddleOfTypingANumber {
             if display.text!.rangeOfString("-") == nil {
                 display.text!.insert("-", atIndex: display.text!.startIndex)
