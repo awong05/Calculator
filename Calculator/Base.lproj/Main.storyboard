@@ -249,7 +249,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeSign:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jLt-Hx-XbG"/>
+                                    <action selector="changeSign:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ldc-sa-bXU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WcU-pK-UDk">

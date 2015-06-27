@@ -97,5 +97,14 @@ class ViewController: UIViewController
     }
     
     @IBAction func changeSign(sender: UIButton) {
+        if userIsInTheMiddleOfTypingANumber {
+            if display.text!.rangeOfString("-") == nil {
+                display.text!.insert("-", atIndex: display.text!.startIndex)
+            } else {
+                display.text!.removeAtIndex(display.text!.startIndex)
+            }
+        } else {
+            performOperation { $0 * -1 }
+        }
     }
 }
