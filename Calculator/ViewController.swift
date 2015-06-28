@@ -50,14 +50,14 @@ class ViewController: UIViewController
     
     func performOperation(operation: (Double, Double) -> Double) {
         if operandStack.count >= 2 {
-            // displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
+            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
             enter()
         }
     }
     
     private func performOperation(operation: Double -> Double) {
         if operandStack.count >= 1 {
-            // displayValue = operation(operandStack.removeLast())
+            displayValue = operation(operandStack.removeLast())
             enter()
         }
     }
@@ -76,7 +76,7 @@ class ViewController: UIViewController
             return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
         }
         set {
-            display.text = "\(newValue)"
+            display.text = "\(newValue!)"
             userIsInTheMiddleOfTypingANumber = false
         }
     }
