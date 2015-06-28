@@ -14,6 +14,8 @@ class ViewController: UIViewController
     @IBOutlet weak var history: UILabel!
     
     var userIsInTheMiddleOfTypingANumber = false
+    
+    var brain = CalculatorBrain()
 
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
@@ -29,51 +31,48 @@ class ViewController: UIViewController
     }
 
     @IBAction func operate(sender: UIButton) {
-        let operation = sender.currentTitle!
         if userIsInTheMiddleOfTypingANumber {
             enter()
         }
-        history.text = history.text! + " \(operation)"
-        switch operation {
-        case "×": performOperation { $0 * $1 }
-        case "÷": performOperation { $1 / $0 }
-        case "+": performOperation { $0 + $1 }
-        case "−": performOperation { $1 - $0 }
-        case "√": performOperation { sqrt($0) }
-        case "sin": performOperation { sin($0) }
-        case "cos": performOperation { cos($0) }
-        case "π": operandStack.append(M_PI)
-        default: break
-        }
-        history.text = history.text! + " ="
-    }
-    
-    func performOperation(operation: (Double, Double) -> Double) {
-        if operandStack.count >= 2 {
-            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
-            enter()
-        }
-    }
-    
-    private func performOperation(operation: Double -> Double) {
-        if operandStack.count >= 1 {
-            displayValue = operation(operandStack.removeLast())
-            enter()
+        // history.text = history.text! + " \(operation)"
+        if let operation = sender.currentTitle {
+            /* TODO: Move extra operations to model.
+            switch operation {
+            case "×": performOperation { $0 * $1 }
+            case "÷": performOperation { $1 / $0 }
+            case "+": performOperation { $0 + $1 }
+            case "−": performOperation { $1 - $0 }
+            case "√": performOperation { sqrt($0) }
+            case "sin": performOperation { sin($0) }
+            case "cos": performOperation { cos($0) }
+            case "π": operandStack.append(M_PI)
+            default: break
+            }
+            history.text = history.text! + " ="
+            */
+            if let result = brain.performOperation(operation) {
+                displayValue = result
+            } else {
+                displayValue = 0
+            }
         }
     }
-    
-    var operandStack = Array<Double>()
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         if displayValue != nil {
-            operandStack.append(displayValue!)
-            history.text = history.text! + " \(displayValue!)"
+            // operandStack.append(displayValue!)
+            // history.text = history.text! + " \(displayValue!)"
+            if let result = brain.pushOperand(displayValue!) {
+                displayValue = result
+            } else {
+                displayValue = 0
+            }
         } else {
             display.text = "0"
             userIsInTheMiddleOfTypingANumber = false
         }
-        println("operandStack = \(operandStack)")
+        // println("operandStack = \(operandStack)")
     }
     
     var displayValue: Double? {
@@ -89,7 +88,7 @@ class ViewController: UIViewController
     @IBAction func clearEverything(sender: UIButton) {
         display.text = "0"
         history.text = ""
-        operandStack.removeAll()
+        // operandStack.removeAll()
         userIsInTheMiddleOfTypingANumber = false
     }
     
@@ -113,8 +112,8 @@ class ViewController: UIViewController
             } else {
                 display.text!.removeAtIndex(display.text!.startIndex)
             }
-        } else {
-            performOperation { $0 * -1 }
-        }
+        } // else {
+            // performOperation { $0 * -1 }
+        // }
     }
 }
