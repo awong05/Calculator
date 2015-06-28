@@ -50,14 +50,14 @@ class ViewController: UIViewController
     
     func performOperation(operation: (Double, Double) -> Double) {
         if operandStack.count >= 2 {
-            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
+            // displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
             enter()
         }
     }
     
     private func performOperation(operation: Double -> Double) {
         if operandStack.count >= 1 {
-            displayValue = operation(operandStack.removeLast())
+            // displayValue = operation(operandStack.removeLast())
             enter()
         }
     }
@@ -66,8 +66,8 @@ class ViewController: UIViewController
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
-        operandStack.append(displayValue)
-        history.text = history.text! + " \(displayValue)"
+        operandStack.append(displayValue!)
+        history.text = history.text! + " \(displayValue!)"
         println("operandStack = \(operandStack)")
     }
     
