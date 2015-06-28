@@ -71,9 +71,9 @@ class ViewController: UIViewController
         println("operandStack = \(operandStack)")
     }
     
-    var displayValue: Double {
+    var displayValue: Double? {
         get {
-            return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
+            return NSNumberFormatter().numberFromString(display.text!)?.doubleValue
         }
         set {
             display.text = "\(newValue)"
