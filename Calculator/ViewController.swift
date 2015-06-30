@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Calculator
-//
-//  Created by Andy Wong on 6/13/15.
-//  Copyright (c) 2015 Propel Marketing. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController
@@ -36,20 +28,11 @@ class ViewController: UIViewController
         }
         // history.text = history.text! + " \(operation)"
         if let operation = sender.currentTitle {
-            /* TODO: Move extra operations to model.
-            switch operation {
-            case "×": performOperation { $0 * $1 }
-            case "÷": performOperation { $1 / $0 }
-            case "+": performOperation { $0 + $1 }
-            case "−": performOperation { $1 - $0 }
-            case "√": performOperation { sqrt($0) }
-            case "sin": performOperation { sin($0) }
-            case "cos": performOperation { cos($0) }
-            case "π": operandStack.append(M_PI)
-            default: break
+            // TODO: This operation needs to be refactored to the model, here for now.
+            if operation == "π" {
+                brain.pushOperand(M_PI)
             }
-            history.text = history.text! + " ="
-            */
+            // history.text = history.text! + " ="
             if let result = brain.performOperation(operation) {
                 displayValue = result
             } else {
@@ -60,8 +43,7 @@ class ViewController: UIViewController
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
-        if displayValue != nil {
-            // operandStack.append(displayValue!)
+        if let value = displayValue {
             // history.text = history.text! + " \(displayValue!)"
             if let result = brain.pushOperand(displayValue!) {
                 displayValue = result
@@ -72,7 +54,6 @@ class ViewController: UIViewController
             display.text = "0"
             userIsInTheMiddleOfTypingANumber = false
         }
-        // println("operandStack = \(operandStack)")
     }
     
     var displayValue: Double? {
@@ -88,7 +69,7 @@ class ViewController: UIViewController
     @IBAction func clearEverything(sender: UIButton) {
         display.text = "0"
         history.text = ""
-        // operandStack.removeAll()
+        brain.clearStack()
         userIsInTheMiddleOfTypingANumber = false
     }
     
@@ -102,7 +83,7 @@ class ViewController: UIViewController
     }
     
     @IBAction func changeSign(sender: UIButton) {
-        // TODO: Refactor this block to be more succinct.
+        // TODO: Refactor this entire block to be more succinct.
         // Currently, uses one loop to check if user is in the middle of typing.
         // If true, function uses nested loop to check current sign, act accordingly.
         // Otherwise, treats button as normal unary operation.
@@ -114,6 +95,8 @@ class ViewController: UIViewController
             }
         } // else {
             // performOperation { $0 * -1 }
+            // TODO: Not working as expected when user is not in the middle of typing.
+            // brain.performOperation("ᐩ/-")
         // }
     }
 }
