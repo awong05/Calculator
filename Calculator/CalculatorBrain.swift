@@ -77,7 +77,8 @@ class CalculatorBrain
         return result
     }
     
-    func pushOperand(operand: Double) -> Double? {
+    // TODO: Resolve all errors.
+    func pushOperand(symbol: String) -> Double? {
         opStack.append(Op.Operand(operand))
         return evaluate()
     }
@@ -93,4 +94,7 @@ class CalculatorBrain
     func clearStack() {
         opStack.removeAll()
     }
+    
+    // TODO: Allow variables to be pushed onto internal stack.
+    var variableValues: Dictionary<String,Double>
 }
