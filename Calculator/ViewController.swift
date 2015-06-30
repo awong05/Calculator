@@ -38,13 +38,6 @@ class ViewController: UIViewController
         if let operation = sender.currentTitle {
             /* TODO: Move extra operations to model.
             switch operation {
-            case "×": performOperation { $0 * $1 }
-            case "÷": performOperation { $1 / $0 }
-            case "+": performOperation { $0 + $1 }
-            case "−": performOperation { $1 - $0 }
-            case "√": performOperation { sqrt($0) }
-            case "sin": performOperation { sin($0) }
-            case "cos": performOperation { cos($0) }
             case "π": operandStack.append(M_PI)
             default: break
             }
@@ -60,8 +53,7 @@ class ViewController: UIViewController
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
-        if displayValue != nil {
-            // operandStack.append(displayValue!)
+        if let value = displayValue {
             // history.text = history.text! + " \(displayValue!)"
             if let result = brain.pushOperand(displayValue!) {
                 displayValue = result
@@ -72,7 +64,6 @@ class ViewController: UIViewController
             display.text = "0"
             userIsInTheMiddleOfTypingANumber = false
         }
-        // println("operandStack = \(operandStack)")
     }
     
     var displayValue: Double? {
