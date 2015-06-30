@@ -49,6 +49,7 @@ class CalculatorBrain
         knownOps["√"] = Op.UnaryOperation("√", sqrt)
         knownOps["sin"] = Op.UnaryOperation("sin", sin)
         knownOps["cos"] = Op.UnaryOperation("cos", cos)
+        // knownOps["ᐩ/-"] = Op.UnaryOperation("ᐩ/-") { $0 * -1 }
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op])
@@ -93,5 +94,9 @@ class CalculatorBrain
             opStack.append(operation)
         }
         return evaluate()
+    }
+    
+    func clearStack() {
+        opStack.removeAll()
     }
 }

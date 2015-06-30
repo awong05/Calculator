@@ -36,13 +36,11 @@ class ViewController: UIViewController
         }
         // history.text = history.text! + " \(operation)"
         if let operation = sender.currentTitle {
-            /* TODO: Move extra operations to model.
-            switch operation {
-            case "π": operandStack.append(M_PI)
-            default: break
+            // TODO: This operation needs to be refactored to the model, here for now.
+            if operation == "π" {
+                brain.pushOperand(M_PI)
             }
-            history.text = history.text! + " ="
-            */
+            // history.text = history.text! + " ="
             if let result = brain.performOperation(operation) {
                 displayValue = result
             } else {
@@ -79,7 +77,7 @@ class ViewController: UIViewController
     @IBAction func clearEverything(sender: UIButton) {
         display.text = "0"
         history.text = ""
-        // operandStack.removeAll()
+        brain.clearStack()
         userIsInTheMiddleOfTypingANumber = false
     }
     
@@ -105,6 +103,8 @@ class ViewController: UIViewController
             }
         } // else {
             // performOperation { $0 * -1 }
+            // TODO: Not working as expected when user is not in the middle of typing.
+            // brain.performOperation("ᐩ/-")
         // }
     }
 }
