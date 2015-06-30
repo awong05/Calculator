@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Calculator
-//
-//  Created by Andy Wong on 6/13/15.
-//  Copyright (c) 2015 Propel Marketing. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController
@@ -91,7 +83,7 @@ class ViewController: UIViewController
     }
     
     @IBAction func changeSign(sender: UIButton) {
-        // TODO: Refactor this block to be more succinct.
+        // TODO: Refactor this entire block to be more succinct.
         // Currently, uses one loop to check if user is in the middle of typing.
         // If true, function uses nested loop to check current sign, act accordingly.
         // Otherwise, treats button as normal unary operation.

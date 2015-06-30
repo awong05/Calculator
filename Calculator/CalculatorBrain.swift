@@ -1,11 +1,3 @@
-//
-//  CalculatorBrain.swift
-//  Calculator
-//
-//  Created by Andy Wong on 6/28/15.
-//  Copyright (c) 2015 Propel Marketing. All rights reserved.
-//
-
 import Foundation
 
 class CalculatorBrain
@@ -49,6 +41,7 @@ class CalculatorBrain
         knownOps["√"] = Op.UnaryOperation("√", sqrt)
         knownOps["sin"] = Op.UnaryOperation("sin", sin)
         knownOps["cos"] = Op.UnaryOperation("cos", cos)
+        // TODO: See ViewController.
         // knownOps["ᐩ/-"] = Op.UnaryOperation("ᐩ/-") { $0 * -1 }
     }
     
@@ -96,6 +89,7 @@ class CalculatorBrain
         return evaluate()
     }
     
+    // TODO: Try to implement this functionality as private.
     func clearStack() {
         opStack.removeAll()
     }
