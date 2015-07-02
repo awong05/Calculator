@@ -88,10 +88,10 @@ class ViewController: UIViewController
         // If true, function uses nested loop to check current sign, act accordingly.
         // Otherwise, treats button as normal unary operation.
         if userIsInTheMiddleOfTypingANumber {
-            if display.text!.rangeOfString("-") == nil {
-                display.text!.insert("-", atIndex: display.text!.startIndex)
-            } else {
+            if let _ = display.text!.rangeOfString("-") {
                 display.text!.removeAtIndex(display.text!.startIndex)
+            } else {
+                display.text!.insert("-", atIndex: display.text!.startIndex)
             }
         } // else {
             // performOperation { $0 * -1 }
