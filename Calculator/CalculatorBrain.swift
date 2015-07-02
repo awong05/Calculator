@@ -57,7 +57,11 @@ class CalculatorBrain
             case .Operand(let operand):
                 return (operand, remainingOps)
             case .Variable(let variable):
-                return (variableValues[variable], remainingOps)
+                if let variableValue = variableValues[variable] {
+                    return (variableValue, remainingOps)
+                } else {
+                    return (nil, ops)
+                }
             case .UnaryOperation(_, let operation):
                 let operandEvaluation = evaluate(remainingOps)
                 if let operand = operandEvaluation.result {
@@ -87,7 +91,6 @@ class CalculatorBrain
         return evaluate()
     }
     
-    // TODO: Resolve all errors.
     func pushOperand(symbol: String) -> Double? {
         opStack.append(Op.Variable(symbol))
         return evaluate()
