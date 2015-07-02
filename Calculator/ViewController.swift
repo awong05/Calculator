@@ -12,7 +12,6 @@ class ViewController: UIViewController
     @IBAction func appendDigit(sender: UIButton) {
         let digit = sender.currentTitle!
         if userIsInTheMiddleOfTypingANumber {
-            // Uses OR short-circuiting to efficiently check decimal conditions.
             if digit != "." || display.text!.rangeOfString(".") == nil {
                 display.text = display.text! + digit
             }
@@ -33,8 +32,8 @@ class ViewController: UIViewController
                 brain.pushOperand(M_PI)
             }
             // history.text = history.text! + " ="
-            if let result = brain.performOperation(operation) {
-                displayValue = result
+            if let value = brain.performOperation(operation) {
+                displayValue = value
             } else {
                 displayValue = 0
             }
@@ -45,14 +44,13 @@ class ViewController: UIViewController
         userIsInTheMiddleOfTypingANumber = false
         if let value = displayValue {
             // history.text = history.text! + " \(displayValue!)"
-            if let result = brain.pushOperand(displayValue!) {
-                displayValue = result
+            if let value = brain.pushOperand(displayValue!) {
+                displayValue = value
             } else {
                 displayValue = 0
             }
         } else {
             display.text = "0"
-            userIsInTheMiddleOfTypingANumber = false
         }
     }
     
@@ -83,20 +81,14 @@ class ViewController: UIViewController
     }
     
     @IBAction func changeSign(sender: UIButton) {
-        // TODO: Refactor this entire block to be more succinct.
-        // Currently, uses one loop to check if user is in the middle of typing.
-        // If true, function uses nested loop to check current sign, act accordingly.
-        // Otherwise, treats button as normal unary operation.
         if userIsInTheMiddleOfTypingANumber {
             if let _ = display.text!.rangeOfString("-") {
                 display.text!.removeAtIndex(display.text!.startIndex)
             } else {
                 display.text!.insert("-", atIndex: display.text!.startIndex)
             }
-        } // else {
-            // performOperation { $0 * -1 }
-            // TODO: Not working as expected when user is not in the middle of typing.
-            // brain.performOperation("ᐩ/-")
-        // }
+        } else {
+            displayValue = displayValue! * -1
+        }
     }
 }

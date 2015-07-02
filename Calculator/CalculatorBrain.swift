@@ -44,8 +44,6 @@ class CalculatorBrain
         knownOps["√"] = Op.UnaryOperation("√", sqrt)
         knownOps["sin"] = Op.UnaryOperation("sin", sin)
         knownOps["cos"] = Op.UnaryOperation("cos", cos)
-        // TODO: See ViewController.
-        // knownOps["ᐩ/-"] = Op.UnaryOperation("ᐩ/-") { $0 * -1 }
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op])
@@ -103,10 +101,9 @@ class CalculatorBrain
         return evaluate()
     }
     
-    // TODO: Try to implement this functionality as private.
     func clearStack() {
         opStack.removeAll()
     }
     
-    var variableValues = [String: Double]()
+    var variableValues = [String:Double]()
 }
