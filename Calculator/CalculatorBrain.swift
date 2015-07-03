@@ -29,8 +29,13 @@ class CalculatorBrain
     }
     
     private var opStack = [Op]()
-    
     private var knownOps = [String:Op]()
+    
+    var variableValues = [String:Double]()
+    
+    var description: String {
+        return "Placeholder"
+    }
     
     init() {
         /*
@@ -41,7 +46,7 @@ class CalculatorBrain
         learnOp(Op.BinaryOperation("×", *))
         */
         knownOps["×"] = Op.BinaryOperation("×", *)
-        knownOps["÷"] = Op.BinaryOperation("×") { $1 / $0 }
+        knownOps["÷"] = Op.BinaryOperation("÷") { $1 / $0 }
         knownOps["+"] = Op.BinaryOperation("+", +)
         knownOps["−"] = Op.BinaryOperation("−") { $1 - $0 }
         knownOps["√"] = Op.UnaryOperation("√", sqrt)
@@ -116,6 +121,4 @@ class CalculatorBrain
     func clearStack() {
         opStack.removeAll()
     }
-    
-    var variableValues = [String:Double]()
 }

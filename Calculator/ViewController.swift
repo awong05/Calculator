@@ -6,7 +6,6 @@ class ViewController: UIViewController
     @IBOutlet weak var history: UILabel!
     
     var userIsInTheMiddleOfTypingANumber = false
-    
     var brain = CalculatorBrain()
 
     @IBAction func appendDigit(sender: UIButton) {
@@ -62,7 +61,7 @@ class ViewController: UIViewController
     
     @IBAction func clearEverything(sender: UIButton) {
         display.text = "0"
-        history.text = ""
+        history.text = " "
         brain.clearStack()
         userIsInTheMiddleOfTypingANumber = false
     }
