@@ -6,6 +6,7 @@ class CalculatorBrain
     {
         case Operand(Double)
         case Variable(String)
+        case Constant(String)
         case UnaryOperation(String, Double -> Double)
         case BinaryOperation(String, (Double, Double) -> Double)
         
@@ -16,6 +17,8 @@ class CalculatorBrain
                     return "\(operand)"
                 case .Variable(let variable):
                     return variable
+                case .Constant(let constant):
+                    return constant
                 case .UnaryOperation(let symbol, _):
                     return symbol
                 case .BinaryOperation(let symbol, _):
@@ -59,6 +62,14 @@ class CalculatorBrain
                     return (variableValue, remainingOps)
                 } else {
                     return (nil, ops)
+                }
+            case .Constant(let constant):
+                switch constant {
+                    case "π":
+                        let constantValue = M_PI
+                        return (constantValue, remainingOps)
+                    default:
+                        return (nil, remainingOps)
                 }
             case .UnaryOperation(_, let operation):
                 let operandEvaluation = evaluate(remainingOps)
