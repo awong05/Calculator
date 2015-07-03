@@ -88,7 +88,7 @@ class ViewController: UIViewController
                 display.text!.insert("-", atIndex: display.text!.startIndex)
             }
         } else {
-            displayValue = displayValue! * -1
+            displayValue = -displayValue!
         }
     }
 }
