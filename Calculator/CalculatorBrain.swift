@@ -34,7 +34,8 @@ class CalculatorBrain
     var variableValues = [String:Double]()
     
     var description: String {
-        return "Placeholder"
+        let (result, remainder) = description(opStack)
+        return result
     }
     
     init() {
@@ -53,6 +54,15 @@ class CalculatorBrain
         knownOps["sin"] = Op.UnaryOperation("sin", sin)
         knownOps["cos"] = Op.UnaryOperation("cos", cos)
         knownOps["π"] = Op.Constant("π")
+    }
+    
+    private func description(ops: [Op]) -> (result: String, remainingOps: [Op])
+    {
+        if !ops.isEmpty {
+            var remainingOps = ops
+            return (" ", remainingOps)
+        }
+        return (" ", ops)
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op])
