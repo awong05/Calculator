@@ -47,6 +47,7 @@ class CalculatorBrain
         knownOps["√"] = Op.UnaryOperation("√", sqrt)
         knownOps["sin"] = Op.UnaryOperation("sin", sin)
         knownOps["cos"] = Op.UnaryOperation("cos", cos)
+        knownOps["π"] = Op.Constant("π")
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op])

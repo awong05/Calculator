@@ -27,10 +27,6 @@ class ViewController: UIViewController
         }
         // history.text = history.text! + " \(operation)"
         if let operation = sender.currentTitle {
-            // TODO: This operation needs to be refactored to the model, here for now.
-            if operation == "π" {
-                brain.pushOperand(M_PI)
-            }
             // history.text = history.text! + " ="
             if let value = brain.performOperation(operation) {
                 displayValue = value
