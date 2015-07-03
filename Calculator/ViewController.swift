@@ -24,9 +24,9 @@ class ViewController: UIViewController
         if userIsInTheMiddleOfTypingANumber {
             enter()
         }
-        // history.text = history.text! + " \(operation)"
+        history.text = brain.description
         if let operation = sender.currentTitle {
-            // history.text = history.text! + " ="
+            history.text = brain.description
             if let value = brain.performOperation(operation) {
                 displayValue = value
             } else {
@@ -38,7 +38,7 @@ class ViewController: UIViewController
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         if let value = displayValue {
-            // history.text = history.text! + " \(displayValue!)"
+            history.text = brain.description
             if let value = brain.pushOperand(displayValue!) {
                 displayValue = value
             } else {
