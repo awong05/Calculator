@@ -66,19 +66,9 @@ class CalculatorBrain
             case .Operand(let operand):
                 return ("\(operand)", remainingOps)
             case .Variable(let variable):
-                if let variableValue = variableValues[variable] {
-                    return ("\(variableValue)", remainingOps)
-                } else {
-                    return (" ", ops)
-                }
+                return (variable, remainingOps)
             case .Constant(let constant):
-                switch constant {
-                case "π":
-                    let constantValue = M_PI
-                    return ("\(constantValue)", remainingOps)
-                default:
-                    return (" ", remainingOps)
-                }
+                return (constant, remainingOps)
             case .UnaryOperation(let operation, _):
                 let operandEvaluation = description(remainingOps)
                 return (operation + "(\(operandEvaluation.result))", operandEvaluation.remainingOps)
