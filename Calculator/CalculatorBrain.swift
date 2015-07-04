@@ -82,14 +82,10 @@ class CalculatorBrain
             case .UnaryOperation(let operation, _):
                 let operandEvaluation = description(remainingOps)
                 return (operation + "(\(operandEvaluation.result))", operandEvaluation.remainingOps)
-            case .BinaryOperation(_, let operation):
-                let op1Evaluation = evaluate(remainingOps)
-                if let operand1 = op1Evaluation.result {
-                    let op2Evaluation = evaluate(op1Evaluation.remainingOps)
-                    if let operand2 = op2Evaluation.result {
-                        return ("\(operation(operand1, operand2))", op2Evaluation.remainingOps)
-                    }
-                }
+            case .BinaryOperation(let operation, _):
+                let op1Evaluation = description(remainingOps)
+                let op2Evaluation = description(op1Evaluation.remainingOps)
+                return (op2Evaluation.result + operation + op1Evaluation.result, op2Evaluation.remainingOps)
             }
         }
         return (" ", ops)
