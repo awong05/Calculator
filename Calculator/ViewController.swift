@@ -31,13 +31,11 @@ class ViewController: UIViewController
                 displayValue = 0
             }
         }
-        history.text = brain.description
     }
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         if let value = displayValue {
-            history.text = brain.description
             if let value = brain.pushOperand(displayValue!) {
                 displayValue = value
             } else {
@@ -55,6 +53,7 @@ class ViewController: UIViewController
         set {
             display.text = "\(newValue!)"
             userIsInTheMiddleOfTypingANumber = false
+            history.text = brain.description + "="
         }
     }
     

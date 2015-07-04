@@ -56,7 +56,7 @@ class CalculatorBrain
         knownOps["π"] = Op.Constant("π")
     }
     
-    // TODO: Currently returning only the latest result, not full string.
+    // TODO: Subtasks f, g.
     private func description(ops: [Op]) -> (result: String, remainingOps: [Op])
     {
         if !ops.isEmpty {
@@ -78,7 +78,7 @@ class CalculatorBrain
                 return (op2Evaluation.result + operation + op1Evaluation.result, op2Evaluation.remainingOps)
             }
         }
-        return (" ", ops)
+        return ("?", ops)
     }
     
     private func evaluate(ops: [Op]) -> (result: Double?, remainingOps: [Op])
