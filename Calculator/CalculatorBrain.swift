@@ -34,7 +34,12 @@ class CalculatorBrain
     var variableValues = [String:Double]()
     
     var description: String {
-        let (result, remainder) = description(opStack)
+        var (result, remainder) = description(opStack)
+        while !remainder.isEmpty {
+            let (prevResult, prevRemainder) = description(remainder)
+            result = prevResult + "," + result
+            remainder = prevRemainder
+        }
         return result
     }
     
@@ -56,7 +61,7 @@ class CalculatorBrain
         knownOps["π"] = Op.Constant("π")
     }
     
-    // TODO: Subtasks f, g.
+    // TODO: Subtasks g.
     private func description(ops: [Op]) -> (result: String, remainingOps: [Op])
     {
         if !ops.isEmpty {
