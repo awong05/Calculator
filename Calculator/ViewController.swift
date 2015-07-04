@@ -25,8 +25,8 @@ class ViewController: UIViewController
             enter()
         }
         if let operation = sender.currentTitle {
-            if let value = brain.performOperation(operation) {
-                displayValue = value
+            if let newValue = brain.performOperation(operation) {
+                displayValue = newValue
             } else {
                 displayValue = 0
             }
@@ -36,8 +36,8 @@ class ViewController: UIViewController
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         if let value = displayValue {
-            if let value = brain.pushOperand(displayValue!) {
-                displayValue = value
+            if let newValue = brain.pushOperand(displayValue!) {
+                displayValue = newValue
             } else {
                 displayValue = 0
             }
@@ -83,5 +83,20 @@ class ViewController: UIViewController
         } else {
             displayValue = -displayValue!
         }
+    }
+    
+    @IBAction func setM(sender: UIButton) {
+        if let value = displayValue {
+            brain.variableValues["M"] = value
+            let newValue = brain.evaluate()
+            displayValue = newValue
+            userIsInTheMiddleOfTypingANumber = false
+        }
+    }
+    
+    @IBAction func getM(sender: UIButton) {
+        enter()
+        brain.pushM()
+        brain.evaluate()
     }
 }
