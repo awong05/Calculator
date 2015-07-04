@@ -26,6 +26,24 @@ class CalculatorBrain
                 }
             }
         }
+        
+        var precedence: Int {
+            get {
+                switch self {
+                case .BinaryOperation(let symbol, _):
+                    switch symbol {
+                    case "×", "÷":
+                        return 100
+                    case "+", "−":
+                        return 150
+                    default:
+                        return Int.max
+                    }
+                default:
+                    return Int.max
+                }
+            }
+        }
     }
     
     private var opStack = [Op]()
