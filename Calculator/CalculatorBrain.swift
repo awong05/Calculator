@@ -62,21 +62,19 @@ class CalculatorBrain
     }
     
     init() {
-        /*
+        
         func learnOp(op: Op) {
             knownOps[op.description] = op
         }
         
         learnOp(Op.BinaryOperation("×", *))
-        */
-        knownOps["×"] = Op.BinaryOperation("×", *)
-        knownOps["÷"] = Op.BinaryOperation("÷") { $1 / $0 }
-        knownOps["+"] = Op.BinaryOperation("+", +)
-        knownOps["−"] = Op.BinaryOperation("−") { $1 - $0 }
-        knownOps["√"] = Op.UnaryOperation("√", sqrt)
-        knownOps["sin"] = Op.UnaryOperation("sin", sin)
-        knownOps["cos"] = Op.UnaryOperation("cos", cos)
-        knownOps["π"] = Op.Constant("π")
+        learnOp(Op.BinaryOperation("÷") { $1 / $0 })
+        learnOp(Op.BinaryOperation("+", +))
+        learnOp(Op.BinaryOperation("−") { $1 - $0 })
+        learnOp(Op.UnaryOperation("√", sqrt))
+        learnOp(Op.UnaryOperation("sin", sin))
+        learnOp(Op.UnaryOperation("cos", cos))
+        learnOp(Op.Constant("π"))
     }
     
     private func description(ops: [Op]) -> (result: String, remainingOps: [Op])
