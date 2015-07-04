@@ -167,6 +167,10 @@ class CalculatorBrain
         return evaluate()
     }
     
+    func pushM() {
+        opStack.append(Op.Variable("M"))
+    }
+    
     func clearStack() {
         opStack.removeAll()
     }

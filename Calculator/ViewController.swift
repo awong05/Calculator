@@ -84,4 +84,20 @@ class ViewController: UIViewController
             displayValue = -displayValue!
         }
     }
+    
+    // TODO: Return blank display if an operand is nil (instead of 0)
+    // Display does not correct itself by default when you click ->M
+    @IBAction func setM(sender: UIButton) {
+        if let value = displayValue {
+            brain.variableValues["M"] = value
+            brain.evaluate()
+            userIsInTheMiddleOfTypingANumber = false
+        }
+    }
+    
+    @IBAction func getM(sender: UIButton) {
+        enter()
+        brain.pushM()
+        brain.evaluate()
+    }
 }
