@@ -79,7 +79,6 @@ class CalculatorBrain
         knownOps["π"] = Op.Constant("π")
     }
     
-    // TODO: Parentheses is imperfect on final example - otherwise, good.
     private func description(ops: [Op]) -> (result: String, remainingOps: [Op])
     {
         if !ops.isEmpty {
@@ -98,15 +97,8 @@ class CalculatorBrain
             case .BinaryOperation(let symbol, let function):
                 var op1Evaluation = description(remainingOps)
                 var op2Evaluation = description(op1Evaluation.remainingOps)
-                if Op.BinaryOperation(symbol, function).precedence > 100 {
-                    if op1Evaluation.result.rangeOfString("+") != nil || op1Evaluation.result.rangeOfString("-") != nil {
-                        op1Evaluation.result = "(" + op1Evaluation.result + ")"
-                    
-                    }
-                    if op2Evaluation.result.rangeOfString("+") != nil || op2Evaluation.result.rangeOfString("-") != nil {
-                        op2Evaluation.result = "(" + op2Evaluation.result + ")"
-                        
-                    }
+                if Op.BinaryOperation(symbol, function).precedence > remainingOps.last?.precedence {
+                    op1Evaluation.result = "(" + op1Evaluation.result + ")"
                 }
                 return (op2Evaluation.result + symbol + op1Evaluation.result, op2Evaluation.remainingOps)
             }
