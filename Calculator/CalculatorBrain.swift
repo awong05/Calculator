@@ -173,5 +173,6 @@ class CalculatorBrain
     
     func clearStack() {
         opStack.removeAll()
+        variableValues["M"] = nil
     }
 }

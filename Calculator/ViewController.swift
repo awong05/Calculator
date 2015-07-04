@@ -25,8 +25,8 @@ class ViewController: UIViewController
             enter()
         }
         if let operation = sender.currentTitle {
-            if let value = brain.performOperation(operation) {
-                displayValue = value
+            if let newValue = brain.performOperation(operation) {
+                displayValue = newValue
             } else {
                 displayValue = 0
             }
@@ -36,8 +36,8 @@ class ViewController: UIViewController
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         if let value = displayValue {
-            if let value = brain.pushOperand(displayValue!) {
-                displayValue = value
+            if let newValue = brain.pushOperand(displayValue!) {
+                displayValue = newValue
             } else {
                 displayValue = 0
             }
@@ -85,12 +85,11 @@ class ViewController: UIViewController
         }
     }
     
-    // TODO: Return blank display if an operand is nil (instead of 0)
-    // Display does not correct itself by default when you click ->M
     @IBAction func setM(sender: UIButton) {
         if let value = displayValue {
             brain.variableValues["M"] = value
-            brain.evaluate()
+            let newValue = brain.evaluate()
+            displayValue = newValue
             userIsInTheMiddleOfTypingANumber = false
         }
     }
