@@ -79,11 +79,9 @@ class CalculatorBrain
                 default:
                     return (" ", remainingOps)
                 }
-            case .UnaryOperation(_, let operation):
-                let operandEvaluation = evaluate(remainingOps)
-                if let operand = operandEvaluation.result {
-                    return ("\(operation(operand))", operandEvaluation.remainingOps)
-                }
+            case .UnaryOperation(let operation, _):
+                let operandEvaluation = description(remainingOps)
+                return (operation + "(\(operandEvaluation.result))", operandEvaluation.remainingOps)
             case .BinaryOperation(_, let operation):
                 let op1Evaluation = evaluate(remainingOps)
                 if let operand1 = op1Evaluation.result {

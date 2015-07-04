@@ -24,15 +24,14 @@ class ViewController: UIViewController
         if userIsInTheMiddleOfTypingANumber {
             enter()
         }
-        history.text = brain.description
         if let operation = sender.currentTitle {
-            history.text = brain.description
             if let value = brain.performOperation(operation) {
                 displayValue = value
             } else {
                 displayValue = 0
             }
         }
+        history.text = brain.description
     }
     
     @IBAction func enter() {
