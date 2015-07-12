@@ -314,7 +314,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="SfG-Ow-5gv" kind="showDetail" identifier="Show Graph" id="gl8-PC-ntZ"/>
+                                    <segue destination="Von-us-XR5" kind="showDetail" identifier="Show Graph" id="gl8-PC-ntZ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -478,12 +478,19 @@
                     <view key="view" contentMode="scaleToFill" id="AIX-hq-ytH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jod-Yn-vzn" customClass="GraphView" customModule="Calculator" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="DgL-5r-tJL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qav-1N-mNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="306" y="1099"/>
+            <point key="canvasLocation" x="980" y="1099"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Gah-RG-DUW">
@@ -491,7 +498,7 @@
                 <splitViewController id="Jli-rT-kZZ" sceneMemberID="viewController">
                     <connections>
                         <segue destination="I8a-HL-eKs" kind="relationship" relationship="masterViewController" id="dXL-SE-G3D"/>
-                        <segue destination="SfG-Ow-5gv" kind="relationship" relationship="detailViewController" id="X6y-jk-zPL"/>
+                        <segue destination="Von-us-XR5" kind="relationship" relationship="detailViewController" id="X6y-jk-zPL"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFi-Ne-Z1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -515,6 +522,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9JA-Oq-Hho" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="306" y="390"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="buW-sN-Nxz">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Von-us-XR5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="wOU-wv-2qu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SfG-Ow-5gv" kind="relationship" relationship="rootViewController" id="xsI-Sh-w7U"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4hY-x6-l3B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="306" y="1099"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
