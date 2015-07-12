@@ -3,10 +3,13 @@ import UIKit
 class GraphView: UIView
 {
     var origin: CGPoint?
-    var scale: CGFloat?
+    var scale: CGFloat {
+        return 16.0
+    }
     var drawer = AxesDrawer()
     
     override func drawRect(rect: CGRect) {
-        drawer.drawAxesInRect(rect, origin: origin!, pointsPerUnit: scale!)
+        origin = superview?.center
+        drawer.drawAxesInRect(rect, origin: origin!, pointsPerUnit: scale)
     }
 }
