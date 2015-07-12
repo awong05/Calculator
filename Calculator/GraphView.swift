@@ -1,5 +1,7 @@
 import UIKit
 
+protocol GraphViewDataSource: class {}
+
 class GraphView: UIView
 {
     var origin: CGPoint?
@@ -7,6 +9,8 @@ class GraphView: UIView
         return 16.0
     }
     var drawer = AxesDrawer()
+    
+    weak var dataSource: GraphViewDataSource?
     
     override func drawRect(rect: CGRect) {
         origin = superview?.center

@@ -99,4 +99,14 @@ class CalculatorViewController: UIViewController
         brain.pushM()
         brain.evaluate()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var destination = segue.destinationViewController as? UIViewController
+        if let navCon = destination as? UINavigationController {
+            destination = navCon.visibleViewController
+        }
+        if let cgvc = destination as? CalculatorGraphViewController {
+            println("You should pass in your formula expression here.")
+        }
+    }
 }
